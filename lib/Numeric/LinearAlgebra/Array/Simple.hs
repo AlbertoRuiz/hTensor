@@ -41,7 +41,7 @@ instance Compat None where
 type Array t = NArray None t
 
 instance (Coord t) => Show (Array t) where
-    show t | null (dims t) = "scalar "++ show (coords t !0)
+    show t | null (dims t) = "scalar "++ show (coords t ! 0)
            | order t == 1 = "index " ++ show n ++" " ++ (show . toList . coords $ t)
            | otherwise = "index "++ show n ++ " [" ++ ps ++ "]"
       where n = head (namesR t)
@@ -56,5 +56,3 @@ listArray :: (Coord t)
     -> Array t
 listArray ds cs = mkNArray dms (product ds |> (cs ++ repeat 0))
     where dms = zipWith3 Idx (repeat None) ds (map show [1::Int ..])
-
-

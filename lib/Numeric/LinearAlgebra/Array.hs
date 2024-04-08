@@ -1,4 +1,4 @@
-{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE UndecidableInstances, FlexibleContexts #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Numeric.LinearAlgebra.Array
