@@ -20,6 +20,7 @@ module Numeric.LinearAlgebra.Array.Decomposition (
     ALSParam(..), defaultParameters
 ) where
 
+import Prelude hiding ((<>))
 import Numeric.LinearAlgebra.Array
 import Numeric.LinearAlgebra.Array.Internal(seqIdx,namesR,sizesR,renameRaw)
 import Numeric.LinearAlgebra.Array.Util

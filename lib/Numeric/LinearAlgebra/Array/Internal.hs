@@ -12,7 +12,7 @@
 --
 -- The arrays provided by this library are immutable, built on top of hmatrix
 -- structures.
--- Operations work on complete structures (indexless), and dimensions have \"names\", 
+-- Operations work on complete structures (indexless), and dimensions have \"names\",
 -- in order to select the desired contractions in tensor computations.
 --
 -- This module contains auxiliary functions not required by the end user.
@@ -58,6 +58,7 @@ module Numeric.LinearAlgebra.Array.Internal (
     debug
 ) where
 
+import Prelude hiding((<>))
 import qualified Numeric.LinearAlgebra.Devel as LA
 import qualified Numeric.LinearAlgebra as LA
 import Numeric.LinearAlgebra hiding (size,scalar,ident)
@@ -245,7 +246,7 @@ matrixatorFree t nr = (reshape s (coords q), nc) where
     s = product (map (flip size t) nc)
 
 -- | Create a list of the substructures at the given level.
-parts :: (Coord t) 
+parts :: (Coord t)
       => NArray i t
       -> Name        -- ^ index to expand
       -> [NArray i t]
@@ -366,13 +367,13 @@ basisOf t = map (dims t `mkNArray`) $ toRows (ident . dim . coords $ t)
 -- --    cmap f (A d v) = A d (cmap f v)
 --     conj (A d v) = A d (conj v)
 --     complex' (A d v) = A d (complex' v) -- mapArray without constraints
--- 
+--
 --     toComplex (A d1 r, A d2 c)  -- zipArray without constraints
 --         | d1==d2 = A d1 (toComplex (r,c))
 --         | otherwise = error "toComplex on arrays with different structure"
--- 
+--
 --     fromComplex (A d v) = (A d *** A d) (fromComplex v)
--- 
+--
 --     single' (A d v) = A d (single' v)
 --     double' (A d v) = A d (double' v)
 
@@ -559,4 +560,3 @@ smartProduct = contractTensors . foldl' (flip addTensor) dat0  where
 -- | sequence of n indices with given prefix
 seqIdx :: Int -> String -> [Name]
 seqIdx n prefix = [prefix ++ show k | k <- [1 .. n] ]
-

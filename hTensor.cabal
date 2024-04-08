@@ -1,5 +1,5 @@
 Name:               hTensor
-Version:            0.9.1
+Version:            0.9.2
 License:            BSD3
 License-file:       LICENSE
 Author:             Alberto Ruiz
@@ -59,4 +59,3 @@ library
 source-repository head
     type:     git
     location: https://github.com/AlbertoRuiz/hTensor
-
